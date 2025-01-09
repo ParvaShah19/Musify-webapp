@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li class="brand"><img src="logo.png" alt="Musify" /> Musify</li>
+      </ul>
+    </nav>
+    <div class="login-container">
+      <h1 class="headings">Login</h1>
+      <br />
+      <form id="login-form" action="/home" method="post">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <input type="submit" value="submit" id="submit" />
+      </form>
+      <p>Don't have an account? <a href="signup">Sign up</a></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

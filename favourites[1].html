@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Shopping Cart</title> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
+    <style>         
+        .product {             
+            border: 2px solid #ccc;             
+            padding: 10px;             
+            margin-bottom: 10px; 
+        }         
+        .cart-item {             
+            border-bottom: 1px solid #ccc;             
+            padding: 10px; 
+        } 
+    </style> 
+</head> 
+<body ng-app="shoppingCartApp"> 
+    <div ng-controller="ShoppingCartController as cart"> 
+        <h1 style="text-align:center">Shopping Cart</h1> 
+        <div class="product" ng-repeat="product in cart.products"> 
+            <h2>{{product.name}}</h2> 
+            <p>{{product.price | currency}}</p> 
+            <button ng-click="cart.addToCart(product)">Add to Cart</button> 
+        </div> 
+        <h2>Cart</h2> 
+        <div class="cart-item" ng-repeat="item in cart.cart"> 
+            {{item.name}} - {{item.price | currency}} 
+            <button ng-click="cart.removeFromCart(item)">Remove</button> 
+        </div> 
+        <p ng-show="cart.cart.length == 0">The cart is empty.</p> 
+        <button ng-click="cart.emptyCart()" ng-show="cart.cart.length > 0">Empty Cart</button> 
+    </div>     
+    <script>         
+        angular.module('shoppingCartApp', [])         
+        .controller('ShoppingCartController', function() {             
+            this.products = [ 
+                {name: 'Product 1', price: 100}, 
+                {name: 'Product 2', price: 200}, 
+                {name: 'Product 3', price: 300} 
+            ];             
+            this.cart = []; 
+ 
+            this.addToCart = function(product) {                 
+                this.cart.push(product); 
+            }; 
+ 
+            this.removeFromCart = function(item) {                 
+                this.cart.splice(this.cart.indexOf(item), 1); 
+            }; 
+ 
+            this.emptyCart = function() {                 
+                this.cart = []; 
+            }; 
+        }); 
+    </script> 
+</body> 
+</html>
